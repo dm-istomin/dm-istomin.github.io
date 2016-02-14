@@ -11,5 +11,5 @@ I have no idea what this blog is about. I'm a programmer and this is connected t
 
 If you want to get in touch, you can contact me via these methods:
 
-> __Email__: dmi.istomin@gmail.com<br>
+> __Email__:  dmi.istomin@gmail.com<br>
 > __GitHub__: [https://github.com/dm-istomin](https://github.com/dm-istomin)
