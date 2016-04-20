@@ -1,5 +1,5 @@
 ---
-title: Nifty Bash Function for Watching a File and Beeping on a Match
+title: Nifty Trick for Tailing a File
 updated: 2016-04-19 23:17
 ---
 
