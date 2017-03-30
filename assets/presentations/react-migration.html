@@ -21,21 +21,11 @@
 
 class: center, middle
 background-image: url(https://camo.githubusercontent.com/4541c78673e224013ac478370708e60ba353ea10/687474703a2f2f6a7073696572656e732e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031362f30362f72656163742d65636f2d77702e676966)
----
-
-# Updating Emissary's Front-End
-
-1. Why do we care about the front-end?
-2. Current technology stack
-3. Issues we hope to solve
-4. Where we're going
-5. Q&A
 
 ---
+# Why is Front-End Important?
 
-# Why do we care about the front-end?
-
-> *Any application that can be written in JavaScript, will be written in 
+> *Any application that can be written in JavaScript, will be written in
 > JavaScript.*
 >
 *- Jeff Atwood*
@@ -43,17 +33,135 @@ background-image: url(https://camo.githubusercontent.com/4541c78673e224013ac4783
 ![XKCD: Operating Systems](https://imgs.xkcd.com/comics/operating_systems.png)
 
 ---
+background-image: url(http://blog.froont.com/content/images/2014/12/02-Tables-1.gif)
+# HTML Tables
 
-# Current Technology Stack
+---
+background-image: url(http://blog.froont.com/content/images/2014/12/03-Javascript-1.gif)
+# JavaScript and CSS
+
+---
+# jQuery
+```js
+$(document).ready(function() {
+      $('article.right section').click(function() {
+        $(this).toggleClass('right-selected');
+        if ($('section.right-selected')) {
+          $(this).children('input.choose').toggle();
+        }
+      });
+
+      $('input.choose').click(function() {
+        var section = $('section.section-selected');
+        if (section.length) {
+          console.log(section.attr('section-id') +
+          ' ' +
+          $(this).attr('location-type'));
+          console.log($(this).parents('article').attr('article-id'));
+        }
+        else {
+          console.log('none selected');
+        }
+      });
+    });
+```
+
+---
+background-image: url(https://angular.io/resources/images/logos/angularjs/AngularJS-Shield.svg)
+# Angular
+```bash
+app/
+----- controllers/
+---------- mainController.js
+---------- otherController.js
+----- directives/
+---------- mainDirective.js
+---------- otherDirective.js
+----- services/
+---------- userService.js
+---------- itemService.js
+----- js/
+---------- bootstrap.js
+---------- jquery.js
+----- app.js
+views/
+----- mainView.html
+----- otherView.html
+----- index.html
+```
+---
+
+# Angular - User Avatar
+
+```js
+.controller('ProfileCtrl', function ($scope, $http) {
+    $http.get('/api/profile').then(function (data) {
+    $scope.profile = data;
+  });
+})
+```
+```js
+.directive('profile', function() {
+  return {
+    templateUrl: 'views/profile.html',
+    controller: 'ProfileCtrl'
+  }
+})
+```
+```js
+.component('avatar', {
+  template: '<img ng-src="http://example.com/images/{{vm.username}}.png" />',
+    bindings: {
+      username: '<'
+    },
+    controllerAs: 'vm'
+})
+```
+```html
+<div>
+  <avatar username="vm.profile.username">
+</div>
+```
 
 ---
 
-# Issues We Want to Solve
+
+# React - User Avatar
+
+```js
+function Avatar(props) {
+  return (
+      <img className="Avatar"
+        src={props.user.avatarUrl}
+        alt={props.user.name}
+      />
+  )
+}
+```
+```js
+function Profile(props) {
+  return (
+    <div>
+      {this.props.children}
+    </div>
+  )
+}
+```
+```html
+<Profile>
+  <Avatar avatarURL="https://avatar.com" alt="my_user_name" />
+</Profile>
+```
+---
+background-image: url(https://cdn.auth0.com/docs/img/incremental-dom.gif)
+---
+
+# Debugging - Angular
 
 ### Angular
 *Oh no, an error! Let me check what it says...*
 ```js
-Uncaught Error: [$injector:modulerr] 
+Uncaught Error: [$injector:modulerr]
 http://errors.angularjs.org/1.5.8/$injector/modulerr?p0=app&p1=Error%3A%20%…
 ```
 
@@ -66,7 +174,7 @@ http://errors.angularjs.org/1.5.8/$injector/modulerr?p0=app&p1=Error%3A%20%…
 ```js
 export default class EngagementsDetailController {
   constructor (
-    engagement, $state, $timeout, $stateParams, $window, EngagementAPI, 
+    engagement, $state, $timeout, $stateParams, $window, EngagementAPI,
     SidebarHelper, ConstantsHelper, DateCalculationHelper
   )
 ```
@@ -75,14 +183,21 @@ files.*
 
 ---
 
-# Issues We Want to Solve
+# Debugging - React
 
 ### React
 *Oh no, an error! Let me check what is says...*
 ```js
-Module not found: Error: 
+Module not found: Error:
 Can't resolve './EngagementDetails' in '/Engagement/containers'
 ```
+*An import in this file is broken.*
+---
+# UI Updates
+![](/assets/img/advisor_design.png)
+---
+# Questions?
+
 
 
 
